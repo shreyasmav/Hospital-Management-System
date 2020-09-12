@@ -1,0 +1,258 @@
+Easy Level Queries:
+
+Q1 . Select all the id's of the Employee.
+Ans:
+mysql> select Emp_id from Employee;
++--------+
+| Emp_id |
++--------+
+| 987987 |
+| 999887 |
+| 111241 |
+| 666884 |
+| 888665 |
+| 987654 |
+| 121242 |
+| 111243 |
+| 111244 |
+| 333445 |
+| 123456 |
+| 453453 |
+| 131245 |
+| 141251 |
+| 111246 |
+| 141252 |
+| 141253 |
+| 999344 |
+| 141247 |
+| 111345 |
+| 111346 |
+| 111347 |
+| 111348 |
++--------+
+
+Q2. Display all the ids, names of the Patients.
+Ans: 
+mysql> select Pat_id,Pat_name from Patient;
++--------+-----------------+
+| Pat_id | Pat_name        |
++--------+-----------------+
+| 135131 | Ganesh Mishra   |
+| 135132 | Zain Khan       |
+| 135133 | Pushpa Ram      |
+| 135134 | Erica Fernandez |
+| 135135 | Sanjana Ramesh  |
+| 135136 | Jinny Kapoor    |
+| 135137 | Kapil Sharma    |
+| 145141 | Ram Kapoor      |
+| 145142 | Shyam Singh     |
+| 145143 | Gita Murthy     |
+| 145144 | Meera Raj       |
+| 145145 | Ranjan Gowda    |
+| 145146 | Ramya Ganesh    |
+| 145147 | Gayatri Kapoor  |
++--------+-----------------+
+14 rows in set (0.00 sec)
+
+Q3. Display all the department names with HOD id.
+Ans: 
+mysql> select Dep_name,HOD_id from Department;
++--------------+--------+
+| Dep_name     | HOD_id |
++--------------+--------+
+| Emergency    | 123456 |
+| Cardiology   | 333445 |
+| Neurology    | 999887 |
+| Maternity    | 987654 |
+| General      | 666884 |
+| Anaesthetics | 999344 |
+| ENT          | 111345 |
++--------------+--------+
+7 rows in set (0.00 sec)
+
+Q4. Display the Nurse names with their Qualification and Salary who are Registered Nurses.
+Ans:
+mysql> select Nrs_name,Qualification,Salary from Nurse;
++----------------+--------------------------------------+----------+
+| Nrs_name       | Qualification                        | Salary   |
++----------------+--------------------------------------+----------+
+| Payal Gupta    | Operating Room Nurse                 | 20000.00 |
+| Shruthi Kapoor | Clinical Nurse Specialist            | 30000.00 |
+| Sanjana Ram    | Labour and Delivery Registered Nurse | 35000.00 |
+| Anushka Singh  | Registered Nurse                     | 32000.00 |
+| Preethi Sharma | Registered Nurse                     | 25000.00 |
+| Sheela Babu    | Licensed Practical Nurse             | 40000.00 |
+| Lakshmi Ram    | Operating Room Nurse                 | 21000.00 |
+| Poorni Babu    | Operating Room Nurse                 | 23000.00 |
+| Lavanya Kapoor | Registered Nurse                     | 30000.00 |
+| Kamala Narayan | Licensed Practical Nurse             | 30000.00 |
++----------------+--------------------------------------+----------+
+10 rows in set (0.00 sec)
+
+Q5. Display the types of Report.
+Ans:
+mysql> select distinct Rep_type from Report;
++----------------------+
+| Rep_type             |
++----------------------+
+| Consultation         |
+| Discharge Summary    |
+| Operative Report     |
+| History and Physical |
+| ENT Lab Report       |
+| Lab Report           |
++----------------------+
+6 rows in set (0.05 sec)
+
+Q6. Display the various Payment modes of the Patients.
+Ans:
+mysql> select distinct Pay_mode from Payment;
++-------------+
+| Pay_mode    |
++-------------+
+| cash        |
+| credit card |
++-------------+
+2 rows in set (0.00 sec)
+
+Q7.Display the Facilities availed by Patient with id = 145141.
+Ans:
+mysql> select * from Facilities where Pat_id="145141";
++--------+---------+---------+------------+---------+-----------+
+| Pat_id | Lab     | ICU     | Blood_bank | OT      | Ambulance |
++--------+---------+---------+------------+---------+-----------+
+| 145141 | Availed | Availed | Availed    | Availed | Availed   |
++--------+---------+---------+------------+---------+-----------+
+1 row in set (0.00 sec)
+
+Medium Level Queries:
+
+Q1. Select the names of Employees whose salary >20000 and age < 30.
+Ans:
+mysql> select Emp_id,Emp_name,Salary,Age from Employee where Salary>20000 and age<30;
++--------+----------------+----------+-----+
+| Emp_id | Emp_name       | Salary   | Age |
++--------+----------------+----------+-----+
+| 111243 | Sundar Shyam   | 35000.00 |  25 |
+| 111246 | Revathi Gowda  | 55000.00 |  29 |
+| 111345 | Aditya Singh   | 85000.00 |  26 |
+| 111346 | Naira Joshi    | 35000.00 |  25 |
+| 111347 | Surbhi Gupta   | 30000.00 |  23 |
+| 111348 | Mauli Malhotra | 25000.00 |  25 |
+| 121242 | Karan Kundra   | 35000.00 |  24 |
+| 131245 | Chandni Mishra | 35000.00 |  25 |
+| 141247 | Sita Narayan   | 65000.00 |  28 |
+| 141251 | Rani Singh     | 25000.00 |  24 |
+| 141252 | Jaya Kapoor    | 25000.00 |  26 |
+| 141253 | Rajesh Mann    | 30000.00 |  26 |
+| 888665 | Shruthi Kapoor | 30000.00 |  25 |
+| 987987 | Kamala Narayan | 30000.00 |  26 |
+| 999344 | Roshan Mishra  | 60000.00 |  27 |
++--------+----------------+----------+-----+
+15 rows in set (0.04 sec)
+
+Q2.Display the Patient details who are between age 30 and 40.
+Ans: 
+mysql> select * from Patient where Age between 30 and 40;
++--------+-----------------+-----+-----+------------+------------------------+
+| Pat_id | Pat_name        | Age | Sex | Mobile     | Address                |
++--------+-----------------+-----+-----+------------+------------------------+
+| 135131 | Ganesh Mishra   |  40 | M   | 9916426795 | Indranagar Bangalore   |
+| 135133 | Pushpa Ram      |  40 | F   | 9936426795 | Malleshwaram Bangalore |
+| 135134 | Erica Fernandez |  30 | F   | 9946426795 | Hebbal Bangalore       |
+| 145143 | Gita Murthy     |  35 | F   | 9902837293 | Hebbal Bangalore       |
+| 145144 | Meera Raj       |  39 | F   | 9902897299 | Mathikere Bangalore    |
++--------+-----------------+-----+-----+------------+------------------------+
+5 rows in set (0.00 sec)
+
+Q3. Display the Department names in Descending order.
+Ans:
+mysql> select * from Department order by Dep_name Desc;
++--------+--------------+--------+
+| Dep_id | Dep_name     | HOD_id |
++--------+--------------+--------+
+| DEP103 | Neurology    | 999887 |
+| DEP104 | Maternity    | 987654 |
+| DEP105 | General      | 666884 |
+| DEP107 | ENT          | 111345 |
+| DEP101 | Emergency    | 123456 |
+| DEP102 | Cardiology   | 333445 |
+| DEP106 | Anaesthetics | 999344 |
++--------+--------------+--------+
+7 rows in set (0.00 sec)
+
+Q4.Display the HOD details.
+Ans:
+mysql> select * from Doctor,Department where Doctor.Doc_id=Department.HOD_id;
++--------+------------------+------------------------+-----------+-----+----------+--------------------------+--------+--------+--------+--------------+--------+
+| Doc_id | Doc_name         | Designation            | Doc_type  | Age | Salary   | Address                  | Pat_id | Dep_id | Dep_id | Dep_name     | HOD_id |
++--------+------------------+------------------------+-----------+-----+----------+--------------------------+--------+--------+--------+--------------+--------+
+| 123456 | Shrisha Saanvika | Physician              | Permanent |  37 | 90000.00 | Mathikere Bangalore      | 145141 | DEP101 | DEP101 | Emergency    | 123456 |
+| 333445 | John Fernandez   | Cardiologist           | Permanent |  39 | 80000.00 | Hebbal Bangalore         | 145142 | DEP102 | DEP102 | Cardiology   | 333445 |
+| 999887 | Ranjana Raju     | Neurologist            | Permanent |  41 | 90000.00 | Yeshwanthpur Bangalore   | 145143 | DEP103 | DEP103 | Neurology    | 999887 |
+| 987654 | Rohith Gowda     | Chief Surgeon          | Permanent |  41 | 70000.00 | Malleshwaram Bangalore   | 145144 | DEP104 | DEP104 | Maternity    | 987654 |
+| 666884 | Anjali Rao       | Chief Surgeon          | Permanent |  45 | 70000.00 | Vidyaranyapura Bangalore | 145145 | DEP105 | DEP105 | General      | 666884 |
+| 999344 | Roshan Mishra    | ENT Specialist         | Permanent |  27 | 50000.00 | Vijaynagar Bangalore     | 145146 | DEP106 | DEP106 | Anaesthetics | 999344 |
+| 111345 | Aditya Singh     | Anaesthesia Specialist | Permanent |  26 | 45000.00 | Sundarnagar Bangalore    | 145147 | DEP107 | DEP107 | ENT          | 111345 |
++--------+------------------+------------------------+-----------+-----+----------+--------------------------+--------+--------+--------+--------------+--------+
+7 rows in set (0.00 sec)
+
+Q5. List the names of the Department and the number of Doctors in each Department.
+Ans:
+mysql> select count(Doc_id),Dep_name from Doctor,Department where Department.D_id=Doctor.Dep_id group by Doctor.Dep_id;
++---------------+--------------+
+| count(Doc_id) | Dep_name     |
++---------------+--------------+
+|             4 | Emergency    |
+|             3 | Cardiology   |
+|             2 | Neurology    |
+|             3 | Maternity    |
+|             2 | General      |
+|             2 | Anaesthetics |
+|             2 | ENT          |
++---------------+--------------+
+7 rows in set (0.00 sec)
+
+Q6.Display the details of Patient who have used Credit card as a mode of Payment.
+Ans:
+mysql> select Pat_id,Pat_name,Address,Pay_mode from Patient,Payment where Payment.P_id=Patient.Pat_id and Pay_mode like "Credit%";
++--------+-----------------+-----------------------+-------------+
+| Pat_id | Pat_name        | Address               | Pay_mode    |
++--------+-----------------+-----------------------+-------------+
+| 145142 | Shyam Singh     | Marathalli Bangalore  | credit card |
+| 145144 | Meera Raj       | Mathikere Bangalore   | credit card |
+| 135131 | Ganesh Mishra   | Indranagar Bangalore  | Credit Card |
+| 135134 | Erica Fernandez | Hebbal Bangalore      | Credit Card |
+| 135135 | Sanjana Ramesh  | Rajajinagar Bangalore | Credit Card |
++--------+-----------------+-----------------------+-------------+
+5 rows in set (0.05 sec)
+
+Q7. List the number of nurses who govern each Ward.
+Ans:
+mysql> select count(Nrs_id),Ward_number from Nurse,Ward where Nurse.Ward_number=Ward.Ward_no group by Nurse.Ward_number;
++---------------+-------------+
+| count(Nrs_id) | Ward_number |
++---------------+-------------+
+|             2 | WA01        |
+|             2 | WA03        |
+|             1 | WA10        |
+|             1 | WA13        |
+|             1 | WA16        |
+|             1 | WA17        |
+|             2 | WA21        |
++---------------+-------------+
+7 rows in set (0.00 sec)
+
+Q8. Get details of Doctor who charge more than 5000 for an Operative Report.
+mysql> select Doctor.Doc_id,Doctor.Doc_name,Doctor.Address,Report.Amount from Doctor,Report where Doctor.Doc_id=Report.Dr_id and Report.Rep_type like "Opera%" and Amount>5000;
++--------+-----------------+---------------------------+----------+
+| Doc_id | Doc_name        | Address                   | Amount   |
++--------+-----------------+---------------------------+----------+
+| 999887 | Ranjana Raju    | Yeshwanthpur Bangalore    | 10000.00 |
+| 111346 | Naira Joshi     | Girinagar Bangalore       |  8000.00 |
+| 111348 | Mauli Malhotra  | Deepanjalinagar Bangalore | 10000.00 |
+| 111244 | Shrishti Rathod | Indranagar Bangalore      |  8500.00 |
+| 141247 | Sita Narayan    | Hebbal Bangalore          | 10000.00 |
+| 141251 | Rani Singh      | Mathikere Bangalore       |  9000.00 |
++--------+-----------------+---------------------------+----------+
+6 rows in set (0.00 sec)
